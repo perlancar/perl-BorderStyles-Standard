@@ -23,3 +23,11 @@ our %BORDER = (
 
 1;
 # ABSTRACT:
+
+=head1 SEE ALSO
+
+L<BorderStyle::Custom>
+
+L<BorderStyle::BoxChar::SingleLine>
+
+L<BorderStyle::UTF8::SingleLine>
