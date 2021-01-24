@@ -1,3 +1,8 @@
+0.004   2021-01-24  Released-By: PERLANCAR; Urgency: medium
+
+	- Add border styles: {ASCII,UTF8}::SingleLineDoubleAfterHeader.
+
+
 0.003   2021-01-23  Released-By: PERLANCAR; Urgency: medium
 
 	- Adjust to BorderStyle 2.0.4 (border characters for table with
