@@ -1,13 +1,13 @@
 package BorderStyle::UTF8::SingleLineBold;
 
+use strict;
+use parent 'BorderStyleBase';
+use utf8;
+
 # AUTHORITY
 # DATE
 # DIST
 # VERSION
-
-use strict;
-use parent 'BorderStyleBase';
-use utf8;
 
 our %BORDER = (
     v => 2,

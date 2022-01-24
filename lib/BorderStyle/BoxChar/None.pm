@@ -1,12 +1,12 @@
 package BorderStyle::BoxChar::None;
 
+use strict;
+use parent 'BorderStyleBase';
+
 # AUTHORITY
 # DATE
 # DIST
 # VERSION
-
-use strict;
-use parent 'BorderStyleBase';
 
 our %BORDER = (
     v => 2,

@@ -1,5 +1,7 @@
 package BorderStyles::Standard;
 
+use strict;
+
 # AUTHORITY
 # DATE
 # DIST
