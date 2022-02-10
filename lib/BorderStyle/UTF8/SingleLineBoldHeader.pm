@@ -1,28 +1,64 @@
 package BorderStyle::UTF8::SingleLineBoldHeader;
 
 use strict;
-use parent 'BorderStyleBase';
+use warnings;
 use utf8;
+
+use Role::Tiny::With;
+with 'BorderStyleRole::Source::ASCIIArt';
 
 # AUTHORITY
 # DATE
 # DIST
 # VERSION
 
-our %BORDER = (
-    v => 2,
-    summary => 'Single-line border (header box bold) with UTF8 characters',
-    chars => [
-        ['┏','━','┳','┓'], # 0
-        ['┃','┃','┃'],     # 1
-        ['┡','━','╇','┩', '┯','┻','├','┤'], # 2
-        ['│','│','│'],     # 3
-        ['├','─','┼','┤', '┬','┴','├','┤'], # 4
-        ['└','─','┴','┘'], # 5
+our @PICTURES = (
+    {
+        for_header_data_separator => 1,
+        picture => <<'_',
+┍━━━━━━━┯━━━┯━━━┑
+╿ ..... ╿ , ╿ . ╿
+╿ ..... ┡━━━╇━━━┩
+╿ ..... ╿ . ╿ . ╿
+╿ ..... ┡━━━┻━━━┩
+╿ ..... ╿ ..... ╿
+┡━━━┯━━━┩ ..... ╿
+╿ . ╿ . ╿ ..... ╿
+┗━━━┻━━━┻━━━━━━━┛
+_
+    },
+    {
+        for_header_row => 1,
+        picture => <<'_',
+┏━━━━━━━┳━━━┳━━━┓
+┃ ..... ┃ , ┃ . ┃
+┃ ..... ┣━━━╋━━━┫
+┃ ..... ┃ . ┃ . ┃
+┃ ..... ┣━━━┻━━━┫
+┃ ..... ┃ ..... ┃
+┣━━━┳━━━┫ ..... ┃
+┃ . ┃ . ┃ ..... ┃
+┗━━━┻━━━┻━━━━━━━┛
+_
+    },
+    {
+        picture => <<'_',
+┌───────┬───┬───┐
+│ ..... │ . │ . │
+│ ..... ├───┼───┤
+│ ..... │ . │ . │
+│ ..... ├───┴───┤
+│ ..... │ ..... │
+├───┬───┤ ..... │
+│ . │ . │ ..... │
+└───┴───┴───────┘
+_
+    },
+);
 
-        ['┌','─','┬','┐'], # 6
-        ['┗','━','┻','┛'], # 7
-    ],
+our %BORDER = (
+    v => 3,
+    summary => 'Single-line border (header box bold) with UTF8 characters',
     utf8 => 1,
 );
 
