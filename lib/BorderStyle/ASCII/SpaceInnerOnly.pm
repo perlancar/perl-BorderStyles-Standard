@@ -1,7 +1,11 @@
 package BorderStyle::ASCII::SpaceInnerOnly;
 
+use 5.010001;
 use strict;
-use parent 'BorderStyleBase';
+use warnings;
+
+use Role::Tiny::With;
+with 'BorderStyleRole::Spec::Basic';
 
 # AUTHORITY
 # DATE
@@ -9,17 +13,23 @@ use parent 'BorderStyleBase';
 # VERSION
 
 our %BORDER = (
-    v => 2,
+    v => 3,
     summary => 'No borders, but columns are still separated using spaces and data row separator is still drawn using dashes',
-    chars => [
-        ['','','',''],   # 0
-        ['',' ',''],     # 1
-        ['',' ',' ','', ' ',' ',' ',' '], # 2
-        ['',' ',''],     # 3
-        ['','-','-','', '-','-','-','-'], # 4
-        ['','','',''],   # 5
-    ],
 );
+
+sub get_border_char {
+    my ($self, %args) = @_;
+    my $char = $args{char};
+    my $repeat = $args{repeat} // 1;
+
+    if ($char eq 'v' && !$args{for_outer_border}) {
+        return " " x $repeat;
+    } elsif ($char eq 'h' && !$args{for_outer_border} && $args{for_data_data_separator}) {
+        return "-" x $repeat;
+    } else {
+        return '';
+    }
+}
 
 1;
 # ABSTRACT:

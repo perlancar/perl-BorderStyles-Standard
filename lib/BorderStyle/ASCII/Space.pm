@@ -1,24 +1,49 @@
 package BorderStyle::ASCII::Space;
 
 use strict;
-use parent 'BorderStyleBase';
+use warnings;
+
+use Role::Tiny::With;
+with 'BorderStyleRole::Source::ASCIIArt';
 
 # AUTHORITY
 # DATE
 # DIST
 # VERSION
 
+our @PICTURES = (
+    {
+        for_data_data_separator => 1,
+        picture => <<'_',
+.-------+---+---.'
+| ..... | . | . |'
+| ..... ---------'
+| ..... | . | . |'
+| ..... +---+---+'
+| ..... | ..... |'
++---+---+ ..... |'
+| . | . | ..... |'
+`---+---+-------''
+_
+    },
+    {
+        picture => <<'_',
+                 '
+  .....   .   .  '
+  .....          '
+  .....   .   .  '
+  .....          '
+  .....   .....  '
+          .....  '
+  .   .   .....  '
+                 '
+_
+    },
+);
+
 our %BORDER = (
-    v => 2,
+    v => 3,
     summary => 'Space as borders, but data row separator is still drawn using dashes',
-    chars => [
-        [' ',' ',' ',' '], # 0
-        [' ',' ',' '],     # 1
-        [' ',' ',' ',' ', ' ',' ',' ',' '], # 2
-        [' ',' ',' '],     # 3
-        [' ','-','-',' ', '-','-','-','-'], # 4
-        [' ',' ',' ',' '], # 5
-    ],
 );
 
 1;

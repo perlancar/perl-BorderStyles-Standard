@@ -1,24 +1,31 @@
 package BorderStyle::ASCII::SingleLineVerticalOnly;
 
 use strict;
-use parent 'BorderStyleBase';
+use warnings;
+
+use Role::Tiny::With;
+with 'BorderStyleRole::Source::ASCIIArt';
 
 # AUTHORITY
 # DATE
 # DIST
 # VERSION
 
+our $PICTURE = <<'_';
+|       |   |   |'
+| ..... | . | . |'
+| ..... |   |   |'
+| ..... | . | . |'
+| ..... |   |   |'
+| ..... | ..... |'
+|   |   | ..... |'
+| . | . | ..... |'
+|   |   |       |'
+_
+
 our %BORDER = (
-    v => 2,
+    v => 3,
     summary => 'Single line border with ASCII characters, vertical only',
-    chars => [
-        ['|',' ','|','|'], # 0
-        ['|','|','|'],     # 1
-        ['|',' ','|','|', ' ',' ','|','|'], # 2
-        ['|','|','|'],     # 3
-        ['|','-','|','|', '-','-','|','|'], # 4
-        ['|',' ','|','|'], # 5
-    ],
 );
 
 1;

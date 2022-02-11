@@ -2,29 +2,48 @@ package BorderStyle::ASCII::SingleLineDoubleAfterHeader;
 
 use strict;
 use warnings;
-use parent 'BorderStyleBase';
+
+use Role::Tiny::With;
+with 'BorderStyleRole::Source::ASCIIArt';
 
 # AUTHORITY
 # DATE
 # DIST
 # VERSION
 
+our @PICTURES = (
+    {
+        for_header_data_separator => 1,
+        picture => <<'_',
+.=======+===+===.'
+| ..... | . | . |'
+| ..... +===+===+'
+| ..... | . | . |'
+| ..... +===+===+'
+| ..... | ..... |'
++===+===+ ..... |'
+| . | . | ..... |'
+`===+===+=======''
+_
+    },
+    {
+        picture => <<'_',
+.-------+---+---.'
+| ..... | . | . |'
+| ..... +---+---+'
+| ..... | . | . |'
+| ..... +---+---+'
+| ..... | ..... |'
++---+---+ ..... |'
+| . | . | ..... |'
+`---+---+-------''
+_
+    },
+);
+
 our %BORDER = (
-    v => 2,
+    v => 3,
     summary => 'Just like ASCII::SingleLine but uses double line to separate header row and first data row',
-    chars => [
-        ['.','-','+','.'], # 0
-        ['|','|','|'],     # 1
-        ['+','=','+','+', '+','+','+','+'], # 2
-        ['|','|','|'],     # 3
-        ['+','-','+','+', '+','+','+','+'], # 4 - separator between data rows
-        ['`','-','+',"'"], # 5
-
-        [], # 6
-        [], # 7
-
-        ['+','-','+','+', '+','+','+','+'], # 8 - separator between header rows
-    ],
 );
 
 1;

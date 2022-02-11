@@ -1,24 +1,49 @@
 package BorderStyle::ASCII::SingleLineInnerOnly;
 
 use strict;
-use parent 'BorderStyleBase';
+use warnings;
+
+use Role::Tiny::With;
+with 'BorderStyleRole::Source::ASCIIArt';
 
 # AUTHORITY
 # DATE
 # DIST
 # VERSION
 
+our @PICTURES = (
+    {
+        for_outer_border => 1,
+        picture => <<'_',
+                 '
+  .....   .   .  '
+  .....          '
+  .....   .   .  '
+  .....          '
+  .....   .....  '
+          .....  '
+  .   .   .....  '
+                 '
+_
+    },
+    {
+        picture => <<'_',
+.-------+---+---.'
+| ..... | . | . |'
+| ..... +---+---+'
+| ..... | . | . |'
+| ..... +---+---+'
+| ..... | ..... |'
++---+---+ ..... |'
+| . | . | ..... |'
+`---+---+-------''
+_
+    },
+);
+
 our %BORDER = (
-    v => 2,
+    v => 3,
     summary => 'Single line border with ASCII characters, between columns only',
-    chars => [
-        ['','','',''],     # 0
-        [' ','|',' '],     # 1
-        [' ','-','+',' ', '+','+'], # 2
-        [' ','|',' '],     # 3
-        [' ','-','+',' ', '+','+','+','+'], # 4
-        ['','','',''],     # 5
-    ],
 );
 
 1;

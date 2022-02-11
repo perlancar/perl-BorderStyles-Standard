@@ -1,25 +1,32 @@
 package BorderStyle::UTF8::SingleLineCurved;
 
 use strict;
-use parent 'BorderStyleBase';
+use warnings;
 use utf8;
+
+use Role::Tiny::With;
+with 'BorderStyleRole::Source::ASCIIArt';
 
 # AUTHORITY
 # DATE
 # DIST
 # VERSION
 
+our $PICTURE = <<'_';
+╭───────┬───┬───╮'
+│ ..... │ . │ . │'
+│ ..... ├───┼───┤'
+│ ..... │ . │ . │'
+│ ..... ├───┴───┤'
+│ ..... │ ..... │'
+├───┬───┤ ..... │'
+│ . │ . │ ..... │'
+╰───┴───┴───────╯'
+_
+
 our %BORDER = (
-    v => 2,
+    v => 3,
     summary => 'Single-line border with UTF8 characters, curved edges',
-    chars => [
-        ['╭','─','┬','╮'], # 0
-        ['│','│','│'],     # 1
-        ['├','─','┼','┤', '┬','┴','├','┤'], # 2
-        ['│','│','│'],     # 3
-        ['├','─','┼','┤', '┬','┴','├','┤'], # 4
-        ['╰','─','┴','╯'], # 5
-    ],
     utf8 => 1,
 );
 

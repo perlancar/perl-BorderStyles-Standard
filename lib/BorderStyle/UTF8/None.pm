@@ -1,8 +1,12 @@
 package BorderStyle::UTF8::None;
 
+use 5.010001;
 use strict;
-use parent 'BorderStyleBase';
 use utf8;
+use warnings;
+
+use Role::Tiny::With;
+with 'BorderStyleRole::Spec::Basic';
 
 # AUTHORITY
 # DATE
@@ -10,18 +14,28 @@ use utf8;
 # VERSION
 
 our %BORDER = (
-    v => 2,
+    v => 3,
     summary => 'No borders, but data row separator is still drawn using horizontal line',
-    chars => [
-        ['','','',''],     # 0
-        ['','',''],        # 1
-        ['','','','', '','','',''],     # 2
-        ['','',''],        # 3
-        ['','─','─','', '','','',''],   # 4
-        ['','','',''],     # 5
-    ],
     utf8 => 1,
 );
+
+sub get_border_char {
+    my ($self, %args) = @_;
+    my $char = $args{char};
+    my $repeat = $args{repeat} // 1;
+
+    if ($char eq 'h' && !$args{for_outer_border} &&
+        ($args{for_header_header_separator} ||
+         $args{for_header_data_separator} ||
+         $args{for_data_data_separator} ||
+         $args{for_data_footer_separator} ||
+         $args{for_footer_footer_separator})
+    ) {
+        return "─" x $repeat;
+    } else {
+        return '';
+    }
+}
 
 1;
 # ABSTRACT:
